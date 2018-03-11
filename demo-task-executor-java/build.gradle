@@ -1,0 +1,40 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+apply plugin: 'application'
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+compileJava {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
+
+jar {
+    baseName = 'demo-task-executor-java'
+    version = '0.0.1'
+}
+
+repositories {
+    mavenCentral()
+}
+
+mainClassName = "demo.Main"
+
+defaultTasks 'run'
+
+test {
+    useTestNG()
+}
+
+dependencies {
+    testCompile group: 'org.testng', name: 'testng', version: '6.9.10'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.11'
+}
